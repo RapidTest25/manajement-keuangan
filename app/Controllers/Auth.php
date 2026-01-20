@@ -18,11 +18,14 @@ class Auth extends BaseController
 
     public function login()
     {
-        die('<h1>HIT CONTROLLER: Auth::login</h1>If you see this, Routing is working.');
         $session = session();
         $validation = \Config\Services::validation();
 
         if ($this->request->getMethod() === 'post') {
+            // DEBUG: Trap POST request
+            die("<h1>DEBUG: POST RECEIVED</h1>Data: " . json_encode($this->request->getPost()));
+
+            $validation->setRules([
             $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
