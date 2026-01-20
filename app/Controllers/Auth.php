@@ -55,7 +55,7 @@ class Auth extends BaseController
                     $roleQuery = $db->table('auth_groups_users')
                         ->select('auth_groups.name')
                         ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
-                        ->where('user_id', $user['id'])
+                        ->where('auth_groups_users.user_id', $user['id'])
                         ->get()
                         ->getRow();
                         
