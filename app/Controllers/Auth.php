@@ -16,20 +16,7 @@ class Auth extends BaseController
         $this->transactionModel = new TransactionModel();
     }
 
-    public function login()
-    {
-        // --- METHOD DEBUG START ---
-        if (isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
-             $ciMethod = $this->request->getMethod();
-             $isPost = ($ciMethod === 'post') ? 'YES' : 'NO';
-             die("<h1>DEBUG COMPARISON</h1>RAW: POST<br>CI4 Method: " . $ciMethod . "<br>Matches 'post'?: " . $isPost);
-        }
-        // --- METHOD DEBUG END ---
-
-        $session = session();
-        $validation = \Config\Services::validation();
-
-        if ($this->request->getMethod() === 'post') {
+        if (strtolower($this->request->getMethod()) === 'post') {
             $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
