@@ -18,28 +18,16 @@ class Auth extends BaseController
 
     public function login()
     {
+        // --- RAW DEBUG CHECK ---
+        if (isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
+            die('<h1>DEBUG: RAW POST DETECTED</h1><pre>' . print_r($_POST, true) . '</pre>');
+        }
+        // -----------------------
+
         $session = session();
         $validation = \Config\Services::validation();
 
         if ($this->request->getMethod() === 'post') {
-            // --- SESSION DIAGNOSTIC START ---
-            $path = WRITEPATH . 'session';
-            echo "<h1>SESSION DIAGNOSIS</h1>";
-            echo "Session Path: " . $path . "<br>";
-            echo "Exists: " . (is_dir($path) ? "YES" : "NO") . "<br>";
-            echo "Writable: " . (is_writable($path) ? "YES" : "NO") . "<br>";
-            
-            $session = session();
-            $session->set('diag_test', 'working');
-            echo "Session ID: " . session_id() . "<br>";
-            echo "Session Test Set: " . ($session->get('diag_test') === 'working' ? "PASS" : "FAIL") . "<br>";
-            
-            if ($session->get('diag_test') !== 'working') {
-                die("CRITICAL ERROR: Session could not be written to memory/disk.");
-            }
-            die("<h1>DIAGNOSIS COMPLETE</h1>If you see this, Session Write is PASS.<br>Check if credentials are correct in DB.");
-            // --- SESSION DIAGNOSTIC END ---
-
             $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
