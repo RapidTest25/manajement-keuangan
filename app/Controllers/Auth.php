@@ -16,15 +16,7 @@ class Auth extends BaseController
         $this->transactionModel = new TransactionModel();
     }
 
-    public function login()
-    {
-        $session = session();
-        $validation = \Config\Services::validation();
-
         if ($this->request->getMethod() === 'post') {
-            // DEBUG: Trap POST request
-            die("<h1>DEBUG: POST RECEIVED</h1>Data: " . json_encode($this->request->getPost()));
-
             $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
@@ -62,7 +54,7 @@ class Auth extends BaseController
                     $this->transactionModel->initializeUserData($user['id']);
 
                     log_message('error', '[Auth::login] Login Success for user: ' . $user['email']);
-                    return redirect()->to('app/dashboard');
+                    return redirect()->to('home');
                 }
 
                 log_message('error', '[Auth::login] Password mismatch or user not found. Input: ' . $login);
