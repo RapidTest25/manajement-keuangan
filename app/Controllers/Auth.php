@@ -62,8 +62,18 @@ class Auth extends BaseController
                     return redirect()->to('home');
                 }
 
-                log_message('error', '[Auth::login] Password mismatch or user not found. Input: ' . $login);
-                $session->setFlashdata('error', 'Email/Username atau Password salah.');
+                // --- FAILURE DIAGNOSIS START ---
+                $found = $user ? "YES (ID: {$user['id']}, Email: {$user['email']})" : "NO";
+                $passValid = ($user && password_verify($password, $user['password_hash'])) ? "YES" : "NO";
+                die("<h1>LOGIN FAILED DIAGNOSIS</h1>
+                     User Found in DB by '$login': <b>$found</b><br>
+                     Password Verify Result: <b>$passValid</b><br>
+                     <br>
+                     If User Not Found: Check spelling or DB content.<br>
+                     If Password Invalid: The password hash in DB doesn't match the input.");
+                // --- FAILURE DIAGNOSIS END ---
+
+                // return redirect()->back()->withInput()->with('error', 'Email/Username atau Password salah.');
             } else {
                 log_message('error', '[Auth::login] Validation failed: ' . json_encode($validation->getErrors()));
                 $session->setFlashdata('error', 'Validasi gagal. Mohon isi semua kolom.');
