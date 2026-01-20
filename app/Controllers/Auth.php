@@ -26,7 +26,6 @@ class Auth extends BaseController
             die("<h1>DEBUG: POST RECEIVED</h1>Data: " . json_encode($this->request->getPost()));
 
             $validation->setRules([
-            $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
             ]);
