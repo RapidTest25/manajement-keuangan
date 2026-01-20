@@ -8,21 +8,21 @@ class View extends BaseController
 {
     public function login()
     {
-        return view('Auth/Login');
+        return view('auth/login');
     }
 
     public function register()
     {
-        return view('Auth/register');
+        return view('auth/register');
     }
 
     public function forgot()
     {
-        return view('Auth/forgot');
+        return view('auth/forgot');
     }
 
     public function reset()
     {
-        return view('Auth/reset');
+        return view('auth/reset');
     }
 }

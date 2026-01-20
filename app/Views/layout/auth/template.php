@@ -7,7 +7,7 @@
     <title><?= $settings['website_name'] ?? 'FinanceFlow' ?></title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="<?= base_url('Assets/css/auth.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/auth.css'); ?>">
     <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css">
     <!-- SweetAlert2 JS -->
@@ -18,7 +18,7 @@
     <?= $this->renderSection('content'); ?>
 
     <!-- Custom JS -->
-    <script src="<?= base_url('Assets/js/auth.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/auth.js'); ?>"></script>
 
     <script>
         // Handle success messages

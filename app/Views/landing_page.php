@@ -593,7 +593,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="<?= base_url('Assets/images/hero-illustration.png') ?>" alt="FinanceFlow Illustration" class="img-fluid animate-float">
+                    <img src="<?= base_url('assets/images/hero-illustration.png') ?>" alt="FinanceFlow Illustration" class="img-fluid animate-float">
                 </div>
             </div>
         </div>

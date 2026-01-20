@@ -10,7 +10,7 @@
     <div class="container">
         <div class="login-box">
             <div class="header">
-                <img src="<?= base_url('Assets/images/logo-white.png') ?>" alt="Logo" class="logo">
+                <img src="<?= base_url('assets/images/logo-white.png') ?>" alt="Logo" class="logo">
                 <h1>FINANCE FLOW</h1>
             </div>
             <div class="form-box">
