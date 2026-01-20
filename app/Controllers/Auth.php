@@ -23,15 +23,20 @@ class Auth extends BaseController
 
         if ($this->request->getMethod() === 'post') {
             $validation->setRules([
-                'email' => 'required|valid_email',
+                'login' => 'required',
                 'password' => 'required|min_length[6]'
             ]);
 
             if ($validation->withRequest($this->request)->run()) {
-                $email = $this->request->getPost('email');
+                $login = $this->request->getPost('login');
                 $password = $this->request->getPost('password');
 
-                $user = $this->userModel->where('email', $email)->first();
+                // Allow login via email or username
+                $user = $this->userModel->groupStart()
+                    ->where('email', $login)
+                    ->orWhere('username', $login)
+                    ->groupEnd()
+                    ->first();
 
                 if ($user && password_verify($password, $user['password_hash'])) {
                     // Ambil group dari Myth/Auth
@@ -56,9 +61,11 @@ class Auth extends BaseController
                     return redirect()->to('app/dashboard');
                 }
 
-                $session->setFlashdata('error', 'Invalid email or password.');
+                $session->setFlashdata('error', 'Email/Username atau Password salah.');
             } else {
-                $session->setFlashdata('error', 'Validation failed.');
+                $session->setFlashdata('error', 'Validasi gagal. Mohon isi semua kolom.');
+                // Pass validation errors back to view (optional, but helpful if view uses valid-feedback)
+                $session->setFlashdata('errors', $validation->getErrors());
             }
         }
 
