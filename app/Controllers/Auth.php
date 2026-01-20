@@ -70,7 +70,7 @@ class Auth extends BaseController
                         'username' => $user['username'] ?? $user['email'],
                         'profile_picture' => $user['user_image'] ?? 'default.jpg',
                         'role' => $role,
-                        'logged_in' => TRUE
+                        'logged_in' => $user['id']
                     ];
                     $session->set($sessionData);
                     
