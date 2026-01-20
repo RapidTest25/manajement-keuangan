@@ -433,7 +433,16 @@ class TransactionModel extends Model
     {
         $session = session();
 
-        $transactions = $this->where('user_id', $userId)
+        // Get username from user_id
+        $userModel = new \App\Models\UserModel();
+        $user = $userModel->find($userId);
+        $username = $user ? $user['username'] : null;
+
+        if (!$username) {
+            return;
+        }
+
+        $transactions = $this->where('users', $username)
             ->orderBy('created_at', 'DESC')
             ->findAll();
 
