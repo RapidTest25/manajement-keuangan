@@ -18,11 +18,13 @@ class Auth extends BaseController
 
     public function login()
     {
-        // --- RAW DEBUG CHECK ---
+        // --- METHOD DEBUG START ---
         if (isset($_SERVER['REQUEST_METHOD']) && strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
-            die('<h1>DEBUG: RAW POST DETECTED</h1><pre>' . print_r($_POST, true) . '</pre>');
+             $ciMethod = $this->request->getMethod();
+             $isPost = ($ciMethod === 'post') ? 'YES' : 'NO';
+             die("<h1>DEBUG COMPARISON</h1>RAW: POST<br>CI4 Method: " . $ciMethod . "<br>Matches 'post'?: " . $isPost);
         }
-        // -----------------------
+        // --- METHOD DEBUG END ---
 
         $session = session();
         $validation = \Config\Services::validation();
