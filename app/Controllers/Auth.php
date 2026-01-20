@@ -57,6 +57,8 @@ class Auth extends BaseController
                         ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
                         ->where('auth_groups_users.user_id', $user['id'])
                         ->get()
+                        ->getRow();
+                        
                     $role = $roleQuery ? $roleQuery->name : 'user';
                     
                     // Set user session data
