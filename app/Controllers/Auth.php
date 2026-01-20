@@ -18,6 +18,7 @@ class Auth extends BaseController
 
     public function login()
     {
+        die('<h1>HIT CONTROLLER: Auth::login</h1>If you see this, Routing is working.');
         $session = session();
         $validation = \Config\Services::validation();
 
