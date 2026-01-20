@@ -1,0 +1,271 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 15% auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.history-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.history-card:active {
+    transform: scale(0.98);
+}
+
+.history-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.history-info {
+    flex: 1;
+}
+
+.history-category {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.history-description {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.history-date {
+    color: #888;
+    font-size: 12px;
+}
+
+.history-amount {
+    text-align: right;
+    padding-left: 15px;
+}
+
+.history-amount .amount {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.history-amount .income {
+    color: #28a745;
+}
+
+.history-amount .expense {
+    color: #dc3545;
+}
+
+.history-amount .transaction-id {
+    color: #888;
+    font-size: 12px;
+}
+
+.detail-item label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.detail-item .fw-bold {
+    font-size: 16px;
+}
+
+.eye-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.2s;
+}
+
+.eye-button:active {
+    transform: scale(0.95);
+}
+
+.balance-card {
+    position: relative;
+}
+
+.balance-amount {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+
+.show-details:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.show-details:active {
+    transform: scale(0.98);
+}
+
+.details {
+    padding: 10px 0;
+}
+
+.see-more-link {
+    color: #10B981;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.see-more-link:hover {
+    color: #059669;
+    transform: translateX(5px);
+}
+
+.see-more-text {
+    background: linear-gradient(120deg, #10B981, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+
+.transaction-modal {
+    margin: 10% auto;
+    max-width: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.transaction-modal .modal-header {
+    border: none;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.status-icon {
+    font-size: 1.4rem;
+}
+
+.transaction-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    background: #f8fafc;
+    margin: 0 20px;
+    border-radius: 12px;
+}
+
+.transaction-details {
+    padding: 20px;
+}
+
+.detail-row {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-row:last-child {
+    border: none;
+}
+
+.detail-label {
+    width: 140px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-value {
+    flex: 1;
+    font-weight: 500;
+}
+
+.btn-receipt {
+    width: 100%;
+    padding: 12px;
+    border: 1px dashed #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-receipt:hover {
+    background: #f8fafc;
+    border-color: #d1d5db;
+}
+
+.receipt-section {
+    padding: 0 20px 20px 20px;
+}
+
+#receiptContainer {
+    display: none;
+    margin-top: 15px;
+}
+
+.receipt-image {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Status colors */
+.transaction-modal.income .transaction-status {
+    color: #059669;
+}
+
+.transaction-modal.expense .transaction-status {
+    color: #dc2626;
+}
+
+.transaction-modal.income .transaction-amount {
+    color: #059669;
+    background: rgba(5, 150, 105, 0.1);
+}
+
+.transaction-modal.expense .transaction-amount {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+}

@@ -1,0 +1,53 @@
+.transaction-item {
+    border-left: 4px solid #ddd;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    width: 100%;
+}
+
+.transaction-item:hover {
+    transform: translateX(5px);
+}
+
+.transaction-item.income {
+    border-left-color: #28a745;
+}
+
+.transaction-item.expense {
+    border-left-color: #dc3545;
+}
+
+.amount.income {
+    color: #28a745;
+}
+
+.amount.expense {
+    color: #dc3545;
+}
+
+@media (max-width: 480px) {
+    .row.g-3 {
+        margin: 0;
+    }
+
+    .col-md-3 {
+        padding: 0 0 10px 0;
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+}
+
+    .container-fluid {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .card {
+        margin-bottom: 2rem;
+    }

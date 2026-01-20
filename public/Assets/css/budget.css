@@ -1,0 +1,162 @@
+/* Combined budget styles */
+
+/* Budget Modal Styles */
+.budget-status {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.budget-progress .progress {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.budget-progress .progress-bar {
+    transition: width 0.5s ease-in-out;
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+.budget-info {
+    flex: 1;
+}
+
+.budget-info .fw-bold {
+    margin-left: 8px;
+    color: #212529;
+}
+
+.budget-details {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Chart Card Budget Styles */
+.chart-card .budget-status {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e9ecef;
+}
+
+.chart-card .budget-status small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Progress Bar States */
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+.progress-bar.bg-success {
+    background-color: #10B981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.progress-bar.bg-warning {
+    background-color: #F59E0B;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.progress-bar.bg-danger {
+    background-color: #EF4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+/* Daily Stats Styles */
+.daily-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.daily-stat-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.daily-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.daily-stat-card .date {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.daily-stat-card .progress {
+    height: 8px;
+    margin: 0.5rem 0;
+    background-color: #e9ecef;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.daily-stat-card .amounts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.daily-stat-card .amounts span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+.daily-stat-card.success {
+    border-left: 4px solid #10B981;
+}
+
+.daily-stat-card.warning {
+    border-left: 4px solid #F59E0B;
+}
+
+.daily-stat-card.danger {
+    border-left: 4px solid #EF4444;
+}
+
+.daily-stats-container {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+}
+
+.daily-stats-container h6 {
+    color: #334155;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.budget-status h6 {
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+#mainDailyTarget {
+    font-weight: 600;
+}
+
+/* Animation */
+@keyframes progress-bar-stripes {
+    from { background-position: 1rem 0; }
+    to { background-position: 0 0; }
+}

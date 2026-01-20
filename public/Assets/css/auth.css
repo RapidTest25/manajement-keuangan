@@ -1,0 +1,174 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #fff;
+    display: flex;
+    max-width: 550px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.header {
+    background: #009e60;
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+}
+
+.form-box {
+    padding: 30px;
+    text-align: center;
+}
+
+.form-box h2 {
+    color: #009e60;
+    margin-bottom: 10px;
+}
+
+.form-box p {
+    margin-bottom: 20px;
+    color: #777;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #009e60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #009e60;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+.forgot {
+    margin-top: 10px;
+}
+
+.forgot a {
+    color: #888;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.register {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register a {
+    color: #009e60;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #999;
+}
+
+
+/* =============== Register ======= */
+
+.captcha {
+    margin: 15px 0;
+}
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.checkbox input {
+    margin-top: 3px;
+}
+
+.checkbox a {
+    color: #8e44ad;
+    text-decoration: none;
+}
+
+.login-link {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+/* =========== forgot ========== */
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #437220;
+    background-color: #e2f2d7;
+    border-color: #d4ecc3;
+}

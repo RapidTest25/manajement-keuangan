@@ -1,0 +1,34 @@
+.chart-card .budget-status {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #e9ecef;
+}
+
+.chart-card .progress {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.chart-card .budget-status small {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.chart-card .progress-bar {
+    transition: width 0.3s ease;
+}
+
+.chart-card .progress-bar.bg-success {
+    background-color: #28a745;
+}
+
+.chart-card .progress-bar.bg-warning {
+    background-color: #ffc107;
+}
+
+.chart-card .progress-bar.bg-danger {
+    background-color: #dc3545;
+}
