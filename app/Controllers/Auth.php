@@ -85,6 +85,25 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
+    // --- EMERGENCY TOOL ---
+    public function emergency_reset()
+    {
+        // Reset password for specific email to '123456'
+        $email = 'ahmadkhadifar@gmail.com';
+        $newPass = '123456';
+        
+        // Use default BCRYPT config if Myth/Auth config unavailable
+        $hash = password_hash($newPass, PASSWORD_DEFAULT);
+        
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->where('email', $email);
+        $builder->update(['password_hash' => $hash]);
+        
+        return "Password for $email has been reset to: $newPass <br> Hash: $hash <br> <a href='".base_url('login')."'>Go to Login</a>";
+    }
+    // ---------------------
+
     public function logout()
     {
         session()->destroy();
