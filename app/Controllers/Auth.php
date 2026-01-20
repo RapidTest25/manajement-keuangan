@@ -60,6 +60,7 @@ class Auth extends BaseController
                         ->getRow();
                         
                     $role = $roleQuery ? $roleQuery->name : 'user';
+                    echo "<h1>DEBUG: ROLE FETCHED ($role)</h1>";
                     
                     // Set user session data
                     $sessionData = [
@@ -73,12 +74,19 @@ class Auth extends BaseController
                         'logged_in' => TRUE
                     ];
                     $session->set($sessionData);
+                    echo "<h1>DEBUG: SESSION SET</h1>";
 
                     // Pre-load initial data
-                    $this->transactionModel->initializeUserData($user['id']);
+                    try {
+                        $this->transactionModel->initializeUserData($user['id']);
+                        echo "<h1>DEBUG: INIT DATA SUCCESS</h1>";
+                    } catch (\Exception $e) {
+                        die("<h1>DEBUG: INIT DATA FAILED: " . $e->getMessage() . "</h1>");
+                    }
 
                     log_message('error', '[Auth::login] Login Success for user: ' . $user['email']);
-                    return redirect()->to('home');
+                    die("<h1>DEBUG: READY TO REDIRECT! (Stop here to confirm DB works)</h1> <a href='".base_url('home')."'>Click to Continue to Home</a>");
+                    // return redirect()->to('home');
                 }
 
                 log_message('error', '[Auth::login] Password mismatch or user not found. Input: ' . $login);
