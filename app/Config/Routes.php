@@ -131,6 +131,7 @@ $routes->group('auth', function($routes) {
     $routes->get('register', 'Auth\View::register');
     $routes->get('forgot', 'Auth\View::forgot');
     $routes->get('reset', 'Auth\View::reset');
+    $routes->get('emergency_reset', 'Auth::emergency_reset'); // EMERGENCY ONLY
 });
 
 /* Administrator Routes */
