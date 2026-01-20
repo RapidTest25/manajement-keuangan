@@ -50,9 +50,17 @@ class Auth extends BaseController
                 }
 
                 if ($user && $passwordValid) {
-                    // Ambil group dari Myth/Auth
-                    $groups = service('authorization')->getGroupsForUser($user['id']);
-                    $role = !empty($groups) ? $groups[0] : 'user';
+                    // Manual DB Query for Role to bypass Authorization Service issues
+                    $db = \Config\Database::connect();
+                    $roleQuery = $db->table('auth_groups_users')
+                        ->select('auth_groups.name')
+                        ->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id')
+                        ->where('user_id', $user['id'])
+                        ->get()
+                        ->getRow();
+                        
+                    $role = $roleQuery ? $roleQuery->name : 'user';
+                    
                     // Set user session data
                     $sessionData = [
                         'user_id' => $user['id'],
