@@ -16,6 +16,11 @@ class Auth extends BaseController
         $this->transactionModel = new TransactionModel();
     }
 
+    public function login()
+    {
+        $session = session();
+        $validation = \Config\Services::validation();
+
         if ($this->request->getMethod() === 'post') {
             $validation->setRules([
                 'login' => 'required',
