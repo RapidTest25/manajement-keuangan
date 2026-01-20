@@ -37,6 +37,7 @@ class Auth extends BaseController
             if ($session->get('diag_test') !== 'working') {
                 die("CRITICAL ERROR: Session could not be written to memory/disk.");
             }
+            die("<h1>DIAGNOSIS COMPLETE</h1>If you see this, Session Write is PASS.<br>Check if credentials are correct in DB.");
             // --- SESSION DIAGNOSTIC END ---
 
             $validation->setRules([
