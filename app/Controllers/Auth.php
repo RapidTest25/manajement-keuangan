@@ -22,8 +22,32 @@ class Auth extends BaseController
         $validation = \Config\Services::validation();
 
         if ($this->request->getMethod() === 'post') {
-            log_message('error', '[Auth::login] POST request received. Data: ' . json_encode($this->request->getPost()));
+            // --- DEBUG HOSTING START ---
+            echo "<h1>DEBUG MODE</h1>";
+            $login = $this->request->getPost('login');
+            echo "Input Login: " . htmlspecialchars($login) . "<br>";
             
+            $user = $this->userModel->groupStart()
+                ->where('email', $login)
+                ->orWhere('username', $login)
+                ->groupEnd()
+                ->first();
+
+            echo "User Check: " . ($user ? "FOUND (ID: " . $user['id'] . ")" : "NOT FOUND") . "<br>";
+            
+            if ($user) {
+                $passVerify = password_verify($this->request->getPost('password'), $user['password_hash']);
+                echo "Password Check: " . ($passVerify ? "VALID" : "INVALID") . "<br>";
+                if ($passVerify) {
+                     echo "Attempting to set session...<br>";
+                } else {
+                    die("DEBUG: Password salah.");
+                }
+            } else {
+                die("DEBUG: User tidak ditemukan di database.");
+            }
+            // --- DEBUG HOSTING END ---
+
             $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
