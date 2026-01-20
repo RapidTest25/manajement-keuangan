@@ -17,6 +17,8 @@
                 <h2>Selamat Datang Kembali !</h2>
                 <p>Silahkan login dengan dahulu ya</p>
 
+                <?= view('Myth\Auth\Views\_message_block') ?>
+
                 <?php if (session()->getFlashdata('error')) : ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <?= session()->getFlashdata('error') ?>

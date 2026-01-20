@@ -60,13 +60,15 @@ class Auth extends BaseController
                     // Pre-load initial data
                     $this->transactionModel->initializeUserData($user['id']);
 
+                    log_message('error', '[Auth::login] Login Success for user: ' . $user['email']);
                     return redirect()->to('app/dashboard');
                 }
 
+                log_message('error', '[Auth::login] Password mismatch or user not found. Input: ' . $login);
                 $session->setFlashdata('error', 'Email/Username atau Password salah.');
             } else {
+                log_message('error', '[Auth::login] Validation failed: ' . json_encode($validation->getErrors()));
                 $session->setFlashdata('error', 'Validasi gagal. Mohon isi semua kolom.');
-                // Pass validation errors back to view (optional, but helpful if view uses valid-feedback)
                 $session->setFlashdata('errors', $validation->getErrors());
             }
         }
