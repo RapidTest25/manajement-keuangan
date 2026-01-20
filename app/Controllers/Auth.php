@@ -40,7 +40,8 @@ class Auth extends BaseController
 
                 $passwordValid = false;
                 if ($user) {
-                    if (password_verify($password, $user['password_hash'])) {
+                    // Use Myth\Auth\Password::verify to handle the specific hashing mechanism (sha384 + bcrypt)
+                    if (\Myth\Auth\Password::verify($password, $user['password_hash'])) {
                         $passwordValid = true;
                     } elseif ($password === $user['password_hash']) {
                         // Handle Plain Text Password (Legacy/Manual Insert)
