@@ -22,6 +22,8 @@ class Auth extends BaseController
         $validation = \Config\Services::validation();
 
         if ($this->request->getMethod() === 'post') {
+            log_message('error', '[Auth::login] POST request received. Data: ' . json_encode($this->request->getPost()));
+            
             $validation->setRules([
                 'login' => 'required',
                 'password' => 'required|min_length[6]'
