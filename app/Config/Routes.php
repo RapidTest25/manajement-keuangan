@@ -116,6 +116,23 @@ $routes->group('auth/ajax', function ($routes) {
     $routes->post('validasi', 'Anonymous\Ajax::validasi');
 });
 
+// Auth Routes (Core)
+$routes->match(['get', 'post'], 'login', 'Auth::login', ['as' => 'login']);
+$routes->get('logout', 'Auth::logout', ['as' => 'logout']);
+$routes->get('register', 'Auth\View::register', ['as' => 'register']);
+$routes->get('forgot', 'Auth\View::forgot', ['as' => 'forgot']);
+$routes->get('reset', 'Auth\View::reset', ['as' => 'reset']);
+
+// Auth Routes (Namespace alias for compatibility)
+$routes->group('auth', function($routes) {
+    $routes->get('login', 'Auth::login');
+    $routes->post('login', 'Auth::login');
+    $routes->get('logout', 'Auth::logout');
+    $routes->get('register', 'Auth\View::register');
+    $routes->get('forgot', 'Auth\View::forgot');
+    $routes->get('reset', 'Auth\View::reset');
+});
+
 /* Administrator Routes */
 $routes->get('administrator/dashboard/stats', 'Administrator\DashboardController::stats');
 $routes->get('administrator/dashboard/trends', 'Administrator\DashboardController::trends');
